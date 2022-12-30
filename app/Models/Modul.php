@@ -13,10 +13,12 @@ class Modul extends Model
     protected $fillable = [
         'id_kategori_modul',
         'id_kelas',
-        'nama_modul',
-        'jml_modul',
+        'judul',
+        'materi',
+        'modul_ke',
         'tgl_terbit',
         'penulis',
+        'status_bel',
         'created_at',
         'updated_at'
     ];

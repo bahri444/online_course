@@ -9,6 +9,11 @@
             <div class="modal-body">
                 @foreach($member as $mbr)
                 @if(Auth::user()->id_user == $mbr->id_user)
+                @if($mbr->status_member=='nonaktif')
+                <div class="col-md-2 mx-auto">
+                    <h6 class="text text-warning">Invalid</h6>
+                </div>
+                @elseif($mbr->status_member=='aktif')
                 <div class="row">
                     <div class="col-md-5 mb-3 mx-auto">
                         <img src="/foto/{{$mbr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
@@ -70,12 +75,18 @@
                         <h6>: {{$mbr->telepon}}</h6>
                     </div>
                 </div>
-                <!-- Button trigger modal -->
+                <div class="row">
+                    <div class="col-md-3 mx-auto">
+                        <h6 class="text text-success">Valid</h6>
+                    </div>
+                </div>
+                <!-- Button update modal -->
                 <div class="mb-2 col-4 mx-auto">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$mbr->id_member}}">
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$mbr->id_member}}">
                         Update Profile
                     </button>
                 </div>
+                @endif
                 @endif
                 @endforeach
             </div>

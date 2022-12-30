@@ -51,6 +51,7 @@
     </div>
 </div>
 @endforeach
+
 <!--read data all kelas-->
 <div class="row justify-content-center">
     <div class="col-xl-5">

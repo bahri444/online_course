@@ -47,43 +47,51 @@ class ModulController extends Controller
         $validasi = $request->validate([
             'id_kategori_modul' => 'required',
             'id_kelas' => 'required',
-            'nama_modul' => 'required',
-            'jml_modul' => 'required',
+            'judul' => 'required',
+            'materi' => 'required',
+            'modul_ke' => 'required',
             'tgl_terbit' => 'required',
             'penulis' => 'required',
+            // 'status_bel' => 'required',
         ]);
         if ($validasi == true) {
             $add = new Modul([
                 'id_kategori_modul' => $request->id_kategori_modul,
                 'id_kelas' => $request->id_kelas,
-                'nama_modul' => $request->nama_modul,
-                'jml_modul' => $request->jml_modul,
+                'judul' => $request->judul,
+                'materi' => $request->materi,
+                'modul_ke' => $request->modul_ke,
                 'tgl_terbit' => $request->tgl_terbit,
-                'penulis' => $request->penulis
+                'penulis' => $request->penulis,
+                // 'status_bel' => $request->status_bel,
             ]);
             $add->save();
             return redirect('modul')->with('success', 'data berhasil di tambahkan !');
         }
-        //id_kategori_modul	id_kelas	nama_modul	jml_modul	tgl_terbit	penulis
     }
     public function UpdateModulById(Request $request)
     {
         $validation = $request->validate([
             'id_kategori_modul' => 'required',
             'id_kelas' => 'required',
-            'nama_modul' => 'required',
-            'jml_modul' => 'required',
+            'judul' => 'required',
+            'materi' => 'required',
+            'modul_ke' => 'required',
             'tgl_terbit' => 'required',
-            'penulis' => 'required'
+            'penulis' => 'required',
+            'status_bel' => 'required',
         ]);
+        // dd($validation);
         if ($validation == true) {
             $edit = array(
                 'id_kategori_modul' => $request->post('id_kategori_modul'),
                 'id_kelas' => $request->post('id_kelas'),
-                'nama_modul' => $request->post('nama_modul'),
-                'jml_modul' => $request->post('jml_modul'),
+                'judul' => $request->post('judul'),
+                'materi' => $request->post('materi'),
+                'modul_ke' => $request->post('modul_ke'),
                 'tgl_terbit' => $request->post('tgl_terbit'),
-                'penulis' => $request->post('penulis')
+                'penulis' => $request->post('penulis'),
+                'status_bel' => $request->post('status_bel')
             );
             Modul::where('id_modul', '=', $request->post('id_modul'))->update($edit);
             return redirect('modul')->with('success', 'data berhasil di edit !');

@@ -94,4 +94,19 @@ class MemberController extends Controller
         Member::where('id_member', $id)->delete();
         return redirect('member')->with('success', 'data berhasil di hapus !');
     }
+
+    public function ValidMember(Request $request)
+    {
+        $data = $request->validate([
+            'id_user' => 'required',
+            'status_member' => 'required'
+        ]);
+        // dd($data);
+        $data = array(
+            'id_user' => $request->post('id_user'),
+            'status_member' => $request->post('status_member'),
+        );
+        Member::where('id_member', '=', $request->post('id_member'))->update($data);
+        return redirect('member')->with('success', 'data berhasil di validasi !');
+    }
 }

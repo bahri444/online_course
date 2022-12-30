@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('alamat', 70);
             $table->string('github', 30);
             $table->string('telepon', 14);
+            $table->enum('status_mentor', ['nonaktif', 'aktif'])->default('nonaktif');
             $table->timestamps();
             $table->foreign('id_user')->references('id_user')->on('user')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('id_bidang')->references('id_bidang')->on('bidang')->cascadeOnUpdate()->cascadeOnDelete();

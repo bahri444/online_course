@@ -41,12 +41,14 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Nama kelas</th>
-                                <th class="text-center">Nama kategori modul</th>
                                 <th class="text-center">Jenis modul</th>
-                                <th class="text-center">Jumlah Modul</th>
-                                <th class="text-center">Tgl Terbit</th>
+                                <th class="text-center">Jenis kelas</th>
+                                <th class="text-center">Judul</th>
+                                <th class="text-center">Modul ke</th>
+                                <th class="text-center">Materi</th>
+                                <th class="text-center">Tgl terbit</th>
                                 <th class="text-center">Penulis</th>
+                                <th class="text-center">Status belajar</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -55,14 +57,16 @@
                             @foreach($joinTbl as $val)
                             <tr class="text-center">
                                 <td><?= $i++ ?></td>
-                                <td>{{$val->jenis_kelas}}</td>
                                 <td>{{$val->jenis_modul}}</td>
-                                <td>{{$val->nama_modul}}</td>
-                                <td>{{$val->jml_modul}}</td>
+                                <td>{{$val->jenis_kelas}}</td>
+                                <td>{{$val->judul}}</td>
+                                <td>{{$val->modul_ke}}</td>
+                                <td>{{$val->materi}}</td>
                                 <td>{{$val->tgl_terbit}}</td>
                                 <td>{{$val->penulis}}</td>
+                                <td>{{$val->status_bel}}</td>
                                 <td>
-                                    <div class="d-flex justify-content-center">
+                                    <div class="d-flex justify-content-between">
                                         @if(Auth::user()->role=='admin')
                                         <div class="col-md-4">
                                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$val->id_modul}}">
@@ -104,10 +108,9 @@
             <form action="/modul/addModul" method="post">
                 <div class="modal-body">
                     @csrf
-                    <!-- id_kategori_modul	id_kelas	nama_modul	jml_modul	tgl_terbit	penulis	 -->
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h6>Kategori Modul</h6>
+                            <h6>Kategori modul</h6>
                             <fieldset class="form-group">
                                 <select name="id_kategori_modul" id="basicSelect" class="form-select">
                                     <option selected>pilih nama kategori</option>
@@ -118,10 +121,10 @@
                             </fieldset>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <h6>Jenis Kelas</h6>
+                            <h6>Jenis kelas</h6>
                             <fieldset class="form-group">
                                 <select name="id_kelas" id="basicSelect" class="form-select">
-                                    <option selected>pilih nama kelas</option>
+                                    <option selected>pilih jenis kelas</option>
                                     @foreach($kelas as $valId)
                                     <option value="{{$valId->id_kelas}}">{{$valId->jenis_kelas}}</option>
                                     @endforeach
@@ -129,23 +132,33 @@
                             </fieldset>
                         </div>
                     </div>
-                    <!-- id_kategori_modul	id_kelas	nama_modul	jml_modul	tgl_terbit	penulis -->
                     <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <h6>Nama Modul</h6>
-                            <input class="form-control" type="text" name="nama_modul" placeholder="nama modul" aria-label="default input example">
+                        <div class="col-md-12 mb-3">
+                            <h6>Judul</h6>
+                            <input class="form-control" type="text" name="judul" placeholder="nama modul" aria-label="default input example">
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <h6>Jumlah Modul</h6>
-                            <input class="form-control" type="number" name="jml_modul" placeholder="jumlah modul" aria-label="default input example">
+                        <div class="col-12 mt-3">
+                            <div class="card-header">Materi</div>
+                            <div class="card-body">
+                                <div class="form-group with-title mb-3">
+                                    <textarea class="form-control" name="materi" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <label>Materi / pembahasan</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
+                            <h6>Modul ke</h6>
+                            <input class="form-control" type="number" name="modul_ke" placeholder="jumlah modul" aria-label="default input example">
+                        </div>
+                        <div class="col-md-6 mb-3">
                             <h6>Tgl terbit</h6>
                             <input class="form-control" type="date" name="tgl_terbit" placeholder="tanggal terbit" aria-label="default input example">
                         </div>
-                        <div class="col-md-6 mb-3">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
                             <h6>Penulis</h6>
                             <input class="form-control" type="text" name="penulis" placeholder="penulis" aria-label="default input example">
                         </div>
@@ -172,13 +185,13 @@
             <form action="/modul/updateModulById" method="post">
                 <div class="modal-body">
                     @csrf
-                    <!-- id_kategori_modul	id_kelas	nama_modul	jml_modul	tgl_terbit	penulis	 -->
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Kategori Modul</h6>
                             <fieldset class="form-group">
                                 <input type="hidden" class="form-control" name="id_modul" value="{{$row->id_modul}}">
                                 <select name="id_kategori_modul" id="basicSelect" class="form-select">
+                                    <option value="{{$row->id_kategori_modul}}">{{$row->jenis_modul}}</option>
                                     @foreach($kategori as $valId)
                                     <option value="{{$valId->id_kategori_modul}}">{{$valId->jenis_modul}}</option>
                                     @endforeach
@@ -197,23 +210,45 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <h6>Nama Modul</h6>
-                            <input class="form-control" type="text" name="nama_modul" value="{{$row->nama_modul}}" placeholder="nama modul" aria-label="default input example">
+                        <div class="col-md-12 mb-3">
+                            <h6>Judul</h6>
+                            <input class="form-control" type="text" name="judul" value="{{$row->judul}}" placeholder="nama modul" aria-label="default input example">
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <h6>Jumlah Modul</h6>
-                            <input class="form-control" type="number" name="jml_modul" value="{{$row->jml_modul}}" placeholder="jumlah modul" aria-label="default input example">
+                        <div class="col-12 mt-3">
+                            <div class="card-header">Materi</div>
+                            <div class="card-body">
+                                <div class="form-group with-title mb-3">
+                                    <textarea class="form-control" name="materi" value="{{$row->materi}}" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <label>Materi / pembahasan</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
+                            <h6>Modul ke</h6>
+                            <input class="form-control" type="number" name="modul_ke" value="{{$row->modul_ke}}" placeholder="jumlah modul" aria-label="default input example">
+                        </div>
+                        <div class="col-md-6 mb-3">
                             <h6>Tgl terbit</h6>
                             <input class="form-control" type="date" name="tgl_terbit" value="{{$row->tgl_terbit}}" placeholder="tanggal terbit" aria-label="default input example">
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Penulis</h6>
                             <input class="form-control" type="text" name="penulis" value="{{$row->penulis}}" placeholder="penulis" aria-label="default input example">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>Status belajar</h6>
+                            <fieldset class="form-group">
+                                <select name="status_bel" id="basicSelect" class="form-select">
+                                    <option value="{{$row->status_bel}}" selected>{{$row->status_bel}}</option>
+                                    <option value="nonaktif">Nonaktif</option>
+                                    <option value="aktif">Aktif</option>
+                                    <option value="selesai">Selesai</option>
+                                </select>
+                            </fieldset>
                         </div>
                     </div>
                     <div class="modal-footer">

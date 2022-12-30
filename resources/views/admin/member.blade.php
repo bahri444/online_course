@@ -49,6 +49,7 @@
                                 <th class="text-center">Alamat</th>
                                 <th class="text-center">Github</th>
                                 <th class="text-center">Telepon</th>
+                                <th class="text-center">Status member</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -60,20 +61,26 @@
                                 <td>{{$val->username}}</td>
                                 <td>{{$val->nama_member}}</td>
                                 <td>{{$val->tgl_lhr}}</td>
-                                <td><img src="/foto/{{$val->foto}}" width="65" height="70" alt=""></td>
+                                <td><img src="/foto/{{$val->foto}}" width="70" height="70" class="rounded-circle" alt=""></td>
                                 <td>{{$val->gender}}</td>
                                 <td>{{$val->alamat}}</td>
                                 <td>{{$val->github}}</td>
                                 <td>{{$val->telepon}}</td>
+                                <td>{{$val->status_member}}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <!-- <div class="d-flex"> -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$val->id_member}}">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalValid{{$val->id_member}}">
+                                                <i class="fas fa-user-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4">
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{$val->id_member}}">
                                                 <i class="fas fa-trash"></i>
                                             </button>
@@ -104,7 +111,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h6>Kategori Modul</h6>
+                            <h6>Nama akun</h6>
                             <fieldset class="form-group">
                                 <select name="id_user" id="basicSelect" class="form-select">
                                     <option selected>pilih nama akun</option>
@@ -187,9 +194,10 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <input class="form-control" type="hidden" name="id_member" value="{{$row->id_member}}" aria-label="default input example">
-                            <h6>Kategori Modul</h6>
+                            <h6>Nama akun</h6>
                             <fieldset class="form-group">
                                 <select name="id_user" id="basicSelect" class="form-select">
+                                    <option value="{{$row->id_user}}" selected>{{$row->username}}</option>
                                     @foreach($users as $valId)
                                     <option value="{{$valId->id_user}}">{{$valId->username}}</option>
                                     @endforeach
@@ -276,4 +284,52 @@
     </div>
 </div>
 @endforeach
+
+<!-- modal validasi -->
+@foreach($member as $rows)
+<div class="modal fade" id="modalValid{{$rows->id_member}}" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit data</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/member/validMember" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" type="hidden" name="id_member" value="{{$rows->id_member}}" aria-label="default input example">
+                            <h6>Nama akun</h6>
+                            <fieldset class="form-group">
+                                <select name="id_user" id="basicSelect" class="form-select">
+                                    <option value="{{$rows->id_user}}" selected>{{$rows->username}}</option>
+                                    @foreach($users as $valId)
+                                    <option value="{{$valId->id_user}}">{{$valId->username}}</option>
+                                    @endforeach
+                                </select>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>Status member</h6>
+                            <fieldset class="form-group">
+                                <select name="status_member" id="basicSelect" class="form-select">
+                                    <option value="{{$rows->status_member}}" selected>{{$rows->status_member}}</option>
+                                    <option value="aktif">Aktif</option>
+                                    <option value="nonaktif">Nonaktif</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Validasi</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+
 @endsection

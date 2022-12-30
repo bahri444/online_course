@@ -11,12 +11,10 @@ class Kelas extends Model
     protected $table = 'kelas';
     protected $primaryKey = 'id_kelas';
     protected $fillable = [
-        'id_member',
         'id_bidang',
         'jenis_kelas',
         'harga_kelas',
         'lama_course',
-        'tgl_bayar',
         'tanggal_berakhir',
         'created_at',
         'updated_at'

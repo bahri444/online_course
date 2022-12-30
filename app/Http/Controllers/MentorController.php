@@ -100,4 +100,18 @@ class MentorController extends Controller
         Mentor::where('id_mentor', '=', $id)->delete();
         return redirect('mentor')->with('success', 'data berhasil di hapus !');
     }
+    public function ValidMentor(Request $request)
+    {
+        $data = $request->validate([
+            'id_user' => 'required',
+            'status_mentor' => 'required'
+        ]);
+        // dd($data);
+        $data = array(
+            'id_user' => $request->post('id_user'),
+            'status_mentor' => $request->post('status_mentor'),
+        );
+        Mentor::where('id_mentor', '=', $request->post('id_mentor'))->update($data);
+        return redirect('mentor')->with('success', 'data berhasil di validasi !');
+    }
 }
