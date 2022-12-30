@@ -1,4 +1,4 @@
-name: Deploy To Staging
+name: Deploy To bahri course
 on:
   push:
     branches:
