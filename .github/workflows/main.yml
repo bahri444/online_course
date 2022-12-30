@@ -1,4 +1,4 @@
-name: Publish to RumahWeb
+name: Publish to Dev
 on:
   push:
     branches:
