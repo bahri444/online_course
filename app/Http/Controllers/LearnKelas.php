@@ -30,9 +30,7 @@ class LearnKelas extends Controller
             ->join('bidang', 'bidang.id_bidang', '=', 'kelas.id_bidang')
             ->join('member', 'member.id_member', '=', 'transaksi_kelas.id_member')
             ->join('modul', 'modul.id_kelas', '=', 'kelas.id_kelas')
-            ->join('question', 'question.id_modul', '=', 'modul.id_modul')
             ->get();
-        // dd($transaction);
         return view('members.kelas_member', [
             'title' => 'kelas anda',
             'member' => $member,

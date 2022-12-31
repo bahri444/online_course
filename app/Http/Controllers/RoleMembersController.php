@@ -33,6 +33,7 @@ class RoleMembersController extends Controller
         $data = Lembaga::all();
         $dataUser = User::all();
         $dataMember = DB::table('member')->join('user', 'user.id_user', '=', 'member.id_user')->get();
+        // dd($dataMember);
         if (Auth::user()->role == 'member') {
             return view('members.lengkapimember', [
                 'instansi' => $data,

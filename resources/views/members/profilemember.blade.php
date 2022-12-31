@@ -7,11 +7,21 @@
         </div>
         <div class="form">
             <div class="modal-body">
+                <div>
+                    @if(session('success'))
+                    <p class="alert alert-success">{{ session('success') }}</p>
+                    @endif
+                    @if($errors->any())
+                    @foreach($errors->all() as $err)
+                    <p class="alert alert-danger">{{ $err }}</p>
+                    @endforeach
+                    @endif
+                </div>
                 @foreach($member as $mbr)
                 @if(Auth::user()->id_user == $mbr->id_user)
                 @if($mbr->status_member=='nonaktif')
                 <div class="col-md-2 mx-auto">
-                    <h6 class="text text-warning">Invalid</h6>
+                    <h6 class="text text-warning">pending validation</h6>
                 </div>
                 @elseif($mbr->status_member=='aktif')
                 <div class="row">
