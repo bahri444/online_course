@@ -23,6 +23,7 @@
 
     <!-- view read kelas -->
     @foreach($transaksi as $val)
+    @if(Auth::user()->id_user == $val->id_user)
     @if($val->validasi_pembayaran=='valid')
     <div class="col-md-4 col-12">
         <div class="card">
@@ -86,6 +87,7 @@
         </p>
     </div>
     @endif
+    @endif
     @endforeach
 </div>
 
@@ -116,6 +118,8 @@
 </div>
 
 <!-- modal jawab question -->
+@foreach($quis as $ques)
+@if($tra->id_modul == $ques->id_modul)
 <div class="modal fade bd-example-modal-xl" id="modalQuis{{$tra->id_modul}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -128,8 +132,8 @@
                     @csrf
                     <div class="row">
                         <div class="col-12 mt-3">
-                            <input type="hidden" name="id_question" value="{{$tra->id_question}}" class="form-control">
-                            <div class="card-header">1. {{$tra->one}}</div>
+                            <input type="hidden" name="id_question" value="{{$ques->id_question}}" class="form-control">
+                            <div class="card-header">1. {{$ques->one}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_one" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -138,7 +142,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">2. {{$tra->two}}</div>
+                            <div class="card-header">2. {{$ques->two}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_two" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -147,7 +151,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">3. {{$tra->three}}</div>
+                            <div class="card-header">3. {{$ques->three}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_three" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -156,7 +160,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">4. {{$tra->four}}</div>
+                            <div class="card-header">4. {{$ques->four}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_four" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -165,7 +169,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">5. {{$tra->five}}</div>
+                            <div class="card-header">5. {{$ques->five}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_five" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -174,7 +178,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">6. {{$tra->six}}</div>
+                            <div class="card-header">6. {{$ques->six}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_six" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -183,7 +187,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">7. {{$tra->seven}}</div>
+                            <div class="card-header">7. {{$ques->seven}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_seven" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -192,7 +196,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">8. {{$tra->eight}}</div>
+                            <div class="card-header">8. {{$ques->eight}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_eight" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -201,7 +205,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">9. {{$tra->nine}}</div>
+                            <div class="card-header">9. {{$ques->nine}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_nine" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -210,7 +214,7 @@
                             </div>
                         </div>
                         <div class="col-12 mt-3">
-                            <div class="card-header">10. {{$tra->ten}}</div>
+                            <div class="card-header">10. {{$ques->ten}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
                                     <textarea class="form-control" name="a_ten" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -229,5 +233,7 @@
         </div>
     </div>
 </div>
+@endif
+@endforeach
 @endforeach
 @endsection

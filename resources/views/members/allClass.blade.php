@@ -53,6 +53,8 @@
 @endforeach
 
 <!--read data all kelas-->
+@foreach($member as $mbr)
+@if(Auth::user()->id_user == $mbr->id_user && $mbr->status_member=='aktif')
 <div class="row justify-content-center">
     <div class="col-xl-5">
         <div class="section_tittle text-center">
@@ -118,4 +120,6 @@
     </div>
     @endforeach
 </div>
+@endif
+@endforeach
 @endsection

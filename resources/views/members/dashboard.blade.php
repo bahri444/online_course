@@ -6,6 +6,8 @@
 </div>
 <div class="page-content">
     <section class="row">
+        @foreach($member as $me)
+        @if(Auth::user()->id_user==$me->id_user && $me->status_member=='aktif')
         <div class="row">
             <div class="col-6 col-lg-3 col-md-6">
                 <div class="card shadow-lg">
@@ -76,6 +78,8 @@
                     </div>
                 </div> -->
         </div>
+        @endif
+        @endforeach
     </section>
 </div>
 @endsection
