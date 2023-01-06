@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KategoriModul;
 use App\Models\Kelas;
 use App\Models\Lembaga;
+use App\Models\Mentor;
 use App\Models\Modul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,7 @@ class ModulController extends Controller
         $data = Lembaga::all();
         $dataKelas = Kelas::all();
         $dataKategori = KategoriModul::all();
+        $mentor = Mentor::all();
         $join = DB::table('modul')
             ->join('kategori_modul', 'kategori_modul.id_kategori_modul', '=', 'modul.id_kategori_modul')
             ->join('kelas', 'kelas.id_kelas', '=', 'modul.id_kelas')
@@ -31,11 +33,12 @@ class ModulController extends Controller
                 'title' => 'data modul',
             ]);
         } elseif (Auth::user()->role == 'mentor') {
-            return view('admin.modul', [
+            return view('mentors.modul', [
                 'instansi' => $data,
                 'kelas' => $dataKelas,
                 'kategori' => $dataKategori,
                 'joinTbl' => $join,
+                'mtr' => $mentor,
                 'title' => 'data modul',
             ]);
         } else {

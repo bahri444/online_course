@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use App\Models\Lembaga;
+use App\Models\Mentor;
 use App\Models\Modul;
 use App\Models\Question;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
@@ -16,6 +18,7 @@ class AnswerController extends Controller
         $l = Lembaga::all();
         $mdl = Modul::all();
         $quis = Question::all();
+        $mentor = Mentor::all();
         $answer = DB::table('answer')
             ->join('question', 'question.id_question', '=', 'answer.id_question')
             ->join('modul', 'modul.id_modul', '=', 'question.id_modul')
@@ -25,13 +28,24 @@ class AnswerController extends Controller
             ->join('bidang', 'bidang.id_bidang', '=', 'kelas.id_bidang')
             ->orderByDesc('id_answer')->get();
         // dd($answer);
-        return view('admin.answer', [
-            'instansi' => $l,
-            'modul' => $mdl,
-            'quis' => $quis,
-            'answer' => $answer,
-            'title' => 'data question'
-        ]);
+        if (Auth::user()->role == "admin") {
+            return view('admin.answer', [
+                'instansi' => $l,
+                'modul' => $mdl,
+                'quis' => $quis,
+                'answer' => $answer,
+                'title' => 'data question'
+            ]);
+        } elseif (Auth::user()->role == 'mentor') {
+            return view('mentors.answer', [
+                'instansi' => $l,
+                'modul' => $mdl,
+                'quis' => $quis,
+                'answer' => $answer,
+                'mentor' => $mentor,
+                'title' => 'jawaban modul'
+            ]);
+        }
     }
     public function AddAnswer(Request $request)
     {

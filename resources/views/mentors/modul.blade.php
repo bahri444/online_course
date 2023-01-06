@@ -31,6 +31,8 @@
         <div class="card">
             <div class="card-body">
                 <!-- Button trigger modal -->
+                @foreach($mtr as $mtrOne)
+                @if(Auth::user()->id_user == $mtrOne->id_user && $mtrOne->status_mentor=='aktif')
                 <div class="mb-2">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAdd">
                         Tambah Data
@@ -41,7 +43,6 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Nama bidang</th>
                                 <th class="text-center">Jenis modul</th>
                                 <th class="text-center">Jenis kelas</th>
                                 <th class="text-center">Judul</th>
@@ -56,9 +57,10 @@
                         <tbody>
                             <?php $i = 1; ?>
                             @foreach($joinTbl as $val)
+                            @foreach($mtr as $mt)
+                            @if(Auth::user()->id_user == $mt->id_user && $mt->id_bidang == $val->id_bidang)
                             <tr class="text-center">
                                 <td><?= $i++ ?></td>
-                                <td>{{$val->id_bidang}}</td>
                                 <td>{{$val->jenis_modul}}</td>
                                 <td>{{$val->jenis_kelas}}</td>
                                 <td>{{$val->judul}}</td>
@@ -90,10 +92,14 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endif
+                            @endforeach
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+                @endif
+                @endforeach
             </div>
         </div>
     </section>
@@ -264,25 +270,4 @@
 </div>
 @endforeach
 
-<!-- Modal hapus-->
-@foreach($joinTbl as $valDel)
-<div class="modal fade" id="modalDelete{{$valDel->id_modul}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete data</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" class="form-control" value="{{$valDel->id_modul}}" name="id_modul">
-                <p>Yakin ingin menghapus data ini...?</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <a href="/modul/deleteModulById/{{$valDel->id_modul}}" class="btn btn-warning">Delete</a>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
 @endsection
