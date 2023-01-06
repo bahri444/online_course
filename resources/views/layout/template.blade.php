@@ -169,6 +169,12 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a href="answer" class='sidebar-link'>
+                                <i class="fas fa-file-signature"></i>
+                                <span>Answers</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="question" class='sidebar-link'>
                                 <i class="fas fa-file-contract"></i>
                                 <span>Question</span>
