@@ -1,8 +1,6 @@
 @extends('layout.template')
 @section('content')
 <div class="card mt-5 col-lg-8 col-12 mx-auto shadow-lg">
-    @foreach($mentor as $row)
-    @if(Auth::user()->id_user== $row->id_user && $row->status_mentor =='nonaktif')
     <div class="card-body">
         <div class="card-header">
             <h4 class="card-title text-center">Lengkapi profile</h4>
@@ -81,13 +79,5 @@
             </div>
         </form>
     </div>
-    @elseif(Auth::user()->id_user== $row->id_user && $row->status_mentor =='aktif')
-    <div class="row-4">
-        <div class="col-3 mx-auto">
-            <p class="text text-info">Profile anda sudah valid</p>
-        </div>
-    </div>
-    @endif
 </div>
-@endforeach
 @endsection
