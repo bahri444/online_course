@@ -2,7 +2,7 @@
 @section('content')
 <div class="card mt-5 col-lg-8 col-12 mx-auto shadow-lg">
     @foreach($member as $mb)
-    @if(Auth::user()->id_user== $mb->id_user && $mb->status_member =='nonaktif')
+    @if($mb->status_member =='nonaktif')
     <div class="card-body">
         <div class="card-header">
             <h4 class="card-title text-center">Lengkapi profile</h4>
