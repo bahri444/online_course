@@ -1,100 +1,104 @@
 @extends('layout.template')
 @section('content')
-<div class="card mt-5 col-lg-4 col-6 mx-auto shadow-lg">
+<div class="card mt-5 col-lg-5 col-md-12 mx-auto shadow-lg">
     <div class="card-body">
         <div class="card-header">
             <h4 class="card-title text-center">Profile</h4>
         </div>
-        <div class="form">
-            <div class="modal-body">
-                @foreach($mentor as $mtr)
-                @if(Auth::user()->id_user == $mtr->id_user)
-                @if($mtr->status_mentor=='nonaktif')
-                <div class="col-2 mx-auto">
-                    <div class="text text-warning">Invalid</div>
-                </div>
-                @elseif($mtr->status_mentor=='aktif')
-                <div class="row">
-                    <div class="col-md-5 mb-3 mx-auto">
-                        <img src="/foto/{{$mtr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="form">
+                    <div class="modal-body">
+                        @foreach($mentor as $mtr)
+                        @if(Auth::user()->id_user == $mtr->id_user)
+                        @if($mtr->status_mentor=='nonaktif')
+                        <div class="col-2 mx-auto">
+                            <div class="text text-warning">Invalid</div>
+                        </div>
+                        @elseif($mtr->status_mentor=='aktif')
+                        <div class="row">
+                            <div class="col-md-5 mb-3 mx-auto">
+                                <img src="/foto/{{$mtr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Username</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mtr->username}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Nama bidang</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mtr->nama_bidang}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Nama mentor</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mtr->nama_mentor}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Tanggal lahir</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mtr->tgl_lhr}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Gender</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mtr->gender}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Alamat</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mtr->alamat}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Nama github</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mtr->github}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Telepon</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mtr->telepon}}</h6>
+                            </div>
+                        </div>
+                        <div class="col-2 mx-auto">
+                            <div class="text text-success">Valid</div>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <div class="mb-2 col-4 mx-auto">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$mtr->id_mentor}}">
+                                Update Profile
+                            </button>
+                        </div>
+                        @endif
+                        @endif
+                        @endforeach
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Username</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mtr->username}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Nama bidang</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mtr->nama_bidang}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Nama mentor</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mtr->nama_mentor}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Tanggal lahir</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mtr->tgl_lhr}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Gender</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mtr->gender}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Alamat</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mtr->alamat}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Nama github</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mtr->github}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Telepon</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mtr->telepon}}</h6>
-                    </div>
-                </div>
-                <div class="col-2 mx-auto">
-                    <div class="text text-success">Valid</div>
-                </div>
-                <!-- Button trigger modal -->
-                <div class="mb-2 col-4 mx-auto">
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$mtr->id_mentor}}">
-                        Update Profile
-                    </button>
-                </div>
-                @endif
-                @endif
-                @endforeach
             </div>
         </div>
     </div>
