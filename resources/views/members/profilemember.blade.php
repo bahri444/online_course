@@ -1,104 +1,108 @@
 @extends('layout.template')
 @section('content')
-<div class="card mt-5 col-lg-4 col-6 mx-auto shadow-lg">
+<div class="card mt-5 col-lg-5 col-md-12 mx-auto shadow-lg">
     <div class="card-body">
         <div class="card-header">
             <h4 class="card-title text-center">Profile</h4>
         </div>
-        <div class="form">
-            <div class="modal-body">
-                <div>
-                    @if(session('success'))
-                    <p class="alert alert-success">{{ session('success') }}</p>
-                    @endif
-                    @if($errors->any())
-                    @foreach($errors->all() as $err)
-                    <p class="alert alert-danger">{{ $err }}</p>
-                    @endforeach
-                    @endif
-                </div>
-                @foreach($member as $mbr)
-                @if(Auth::user()->id_user == $mbr->id_user)
-                @if($mbr->status_member=='nonaktif')
-                <div class="col-md-2 mx-auto">
-                    <h6 class="text text-warning">pending validation</h6>
-                </div>
-                @elseif($mbr->status_member=='aktif')
-                <div class="row">
-                    <div class="col-md-5 mb-3 mx-auto">
-                        <img src="/foto/{{$mbr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="form">
+                    <div class="modal-body">
+                        <div>
+                            @if(session('success'))
+                            <p class="alert alert-success">{{ session('success') }}</p>
+                            @endif
+                            @if($errors->any())
+                            @foreach($errors->all() as $err)
+                            <p class="alert alert-danger">{{ $err }}</p>
+                            @endforeach
+                            @endif
+                        </div>
+                        @foreach($member as $mbr)
+                        @if(Auth::user()->id_user == $mbr->id_user)
+                        @if($mbr->status_member=='nonaktif')
+                        <div class="col-md-2 mx-auto">
+                            <h6 class="text text-warning">pending validation</h6>
+                        </div>
+                        @elseif($mbr->status_member=='aktif')
+                        <div class="row">
+                            <div class="col-lg-5 mb-3 mx-auto">
+                                <img src="/foto/{{$mbr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Username</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mbr->username}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Nama member</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mbr->nama_member}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Tanggal lahir</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mbr->tgl_lhr}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Gender</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mbr->gender}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Alamat</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mbr->alamat}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Nama github</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mbr->github}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h6>Telepon</h6>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <h6>: {{$mbr->telepon}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mx-auto">
+                                <h6 class="text text-success">Valid</h6>
+                            </div>
+                        </div>
+                        <!-- Button update modal -->
+                        <div class="mb-2 col-4 mx-auto">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$mbr->id_member}}">
+                                Update Profile
+                            </button>
+                        </div>
+                        @endif
+                        @endif
+                        @endforeach
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Username</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mbr->username}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Nama member</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mbr->nama_member}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Tanggal lahir</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mbr->tgl_lhr}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Gender</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mbr->gender}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Alamat</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mbr->alamat}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Nama github</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mbr->github}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <h6>Telepon</h6>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <h6>: {{$mbr->telepon}}</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 mx-auto">
-                        <h6 class="text text-success">Valid</h6>
-                    </div>
-                </div>
-                <!-- Button update modal -->
-                <div class="mb-2 col-4 mx-auto">
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$mbr->id_member}}">
-                        Update Profile
-                    </button>
-                </div>
-                @endif
-                @endif
-                @endforeach
             </div>
         </div>
     </div>
