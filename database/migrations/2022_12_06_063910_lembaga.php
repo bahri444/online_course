@@ -17,7 +17,12 @@ return new class extends Migration
             $table->id('id_lembaga');
             $table->string('nama', 30);
             $table->string('logo', 20);
-            $table->string('tentang');
+            $table->longText('tentang');
+            $table->string('kontak', 12);
+            $table->string('email', 30);
+            $table->string('whatsapp', 12);
+            $table->string('facebook', 30);
+            $table->string('instagram', 30);
             $table->timestamps();
         });
     }

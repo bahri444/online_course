@@ -44,6 +44,11 @@
                                 <th class="text-center">Nama instansi</th>
                                 <th class="text-center">Logo</th>
                                 <th class="text-center">Tentang</th>
+                                <th class="text-center">Kontak</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">WhatsApp</th>
+                                <th class="text-center">Facebook</th>
+                                <th class="text-center">Instagram</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -55,6 +60,12 @@
                                 <td>{{$val->nama}}</td>
                                 <td class="overflow-hidden"><img src="/logo/{{$val->logo}}" alt="404" width="90" height="90" class="rounded-circle"></td>
                                 <td class="text-align">{{$val->tentang}}</td>
+                                <td class="text-align">{{$val->kontak}}</td>
+                                <td class="text-align">{{$val->email}}</td>
+                                <td class="text-align">{{$val->whatsapp}}</td>
+                                <td class="text-align">{{$val->facebook}}</td>
+                                <td class="text-align">{{$val->instagram}}</td>
+                                <!-- 'kontak',    'email',    'whatsapp',    'facebook',    'instagram', -->
                                 <td>
                                     <div class="container px-3 text-center">
                                         <!--px untuk ukuran padding horizontal (lebar padding ke kanan)-->
@@ -96,14 +107,16 @@
                 <div class="modal-body">
                     @csrf
                     <div class="row">
-                        <div class="col-12 mt-1">
+                        <div class="col-6 mt-1">
                             <h6>Nama instansi</h6>
                             <input class="form-control" type="text" name="nama" placeholder="nama perusahaan" aria-label="default input example">
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-1">
                             <h6>Logo</h6>
                             <input class="form-control" type="file" name="logo" aria-label="default input example">
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-12 mt-3">
                             <div class="card-header">Tentang</div>
                             <div class="card-body">
@@ -112,6 +125,32 @@
                                     <label>Tentang instansi</label>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <h6>Kontak</h6>
+                            <input class="form-control" type="text" name="kontak" aria-label="default input example">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <h6>Email</h6>
+                            <input class="form-control" type="email" name="email" aria-label="default input example">
+                        </div>
+                        <div class="col-6">
+                            <h6>WhatsApp</h6>
+                            <input class="form-control" type="text" name="whatsapp" aria-label="default input example">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <h6>Facebook</h6>
+                            <input class="form-control" type="text" name="facebook" aria-label="default input example">
+                        </div>
+                        <div class="col-6">
+                            <h6>instagram</h6>
+                            <input class="form-control" type="text" name="instagram" aria-label="default input example">
                         </div>
                     </div>
                 </div>
@@ -146,6 +185,8 @@
                             <h6>Logo</h6>
                             <input class="form-control" type="file" name="logo" value="{{$row->logo}}" aria-label="default input example">
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-12 mt-3">
                             <div class="card-header">Tentang</div>
                             <div class="card-body">
@@ -154,6 +195,32 @@
                                     <label>Tentang instansi</label>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <h6>Kontak</h6>
+                            <input class="form-control" type="text" name="kontak" value="{{$row->kontak}}" aria-label="default input example">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <h6>Email</h6>
+                            <input class="form-control" type="email" name="email" value="{{$row->email}}" aria-label="default input example">
+                        </div>
+                        <div class="col-6">
+                            <h6>WhatsApp</h6>
+                            <input class="form-control" type="text" name="whatsapp" value="{{$row->whatsapp}}" aria-label="default input example">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <h6>Facebook</h6>
+                            <input class="form-control" type="text" name="facebook" value="{{$row->facebook}}" aria-label="default input example">
+                        </div>
+                        <div class="col-6">
+                            <h6>instagram</h6>
+                            <input class="form-control" type="text" name="instagram" value="{{$row->instagram}}" aria-label="default input example">
                         </div>
                     </div>
                 </div>

@@ -127,6 +127,18 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a href="kategoriKegiatan" class='sidebar-link'>
+                                <i class="fas fa-weight"></i>
+                                <span>Kategori kegiatan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="kegiatan" class='sidebar-link'>
+                                <i class="fas fa-walking"></i>
+                                <span>Kegiatan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="question" class='sidebar-link'>
                                 <i class="fas fa-file-contract"></i>
                                 <span>Question</span>
