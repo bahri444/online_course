@@ -4,6 +4,8 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\BidangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KategoriKegiatanController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KtgrModulController;
 use App\Http\Controllers\LearnKelas;
@@ -71,6 +73,22 @@ Route::prefix('bidang')->group(function () {
     Route::post('/addBidang', [BidangController::class, 'AddBidang'])->name('bidang.AddBidang');
     Route::post('/updateByIdBidang', [BidangController::class, 'UpdateByIdBidang'])->name('bidang.UpdateByIdBidang');
     Route::get('/deleteByIdBidang/{id}', [BidangController::class, 'DeleteByIdBidang'])->name('bidang.DeleteByIdBidang');
+});
+
+//route for kategori kegiatan
+Route::prefix('kategoriKegiatan')->group(function () {
+    Route::get('/', [KategoriKegiatanController::class, 'GetKategoriKeg'])->name('GetKategoriKeg');
+    Route::post('/addKategoriKeg', [KategoriKegiatanController::class, 'AddKategoriKeg'])->name('AddKategoriKeg');
+    Route::post('/updtKategoriKeg', [KategoriKegiatanController::class, 'UpdtKategoriKeg'])->name('UpdtKategoriKeg');
+    Route::get('/deleteKategoriKeg/{id}', [KategoriKegiatanController::class, 'DeleteKategoriKeg'])->name('DeleteKategoriKeg');
+});
+
+//route for kegiatan
+Route::prefix('kegiatan')->group(function () {
+    Route::get('/', [KegiatanController::class, 'GetKegiatan'])->name('GetKegiatan');
+    Route::post('/addKegiatan', [KegiatanController::class, 'AddKegiatan'])->name('AddKegiatan');
+    Route::post('/updtKegiatan', [KegiatanController::class, 'UpdtKegiatan'])->name('UpdtKegiatan');
+    Route::get('/deleteKegiatan/{id}', [KegiatanController::class, 'DeleteKegiatan'])->name('DeleteKegiatan');
 });
 
 //route for Kelas

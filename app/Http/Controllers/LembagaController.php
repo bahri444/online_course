@@ -24,17 +24,28 @@ class LembagaController extends Controller
     }
     public function AddLembaga(Request $request)
     {
-        $request->validate([
+        $validation = $request->validate([
             'nama' => 'required',
             'logo' => 'required|image|mimes:png,jpg,jpeg|max:1024',
-            'tentang' => 'required'
+            'tentang' => 'required',
+            'kontak' => 'required',
+            'email' => 'required',
+            'whatsapp' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required',
         ]);
         $logoName = time() . '.' . $request->logo->extension();
         $request->logo->move(public_path('logo'), $logoName);
+        // dd($validation);
         $datas = new Lembaga([
             'nama' => $request->nama,
             'logo' => $logoName,
             'tentang' => $request->tentang,
+            'kontak' => $request->kontak,
+            'email' => $request->email,
+            'whatsapp' => $request->whatsapp,
+            'facebook' => $request->facebook,
+            'instagram' => $request->instagram,
         ]);
         $datas->save();
         return redirect('instansi')->with('success', 'data berhasil di tambahkan !');
@@ -44,7 +55,12 @@ class LembagaController extends Controller
         $request->validate([
             'nama' => 'required',
             'logo' => 'required|image|mimes:png,jpg,jpeg|max:1024',
-            'tentang' => 'required'
+            'tentang' => 'required',
+            'kontak' => 'required',
+            'email' => 'required',
+            'whatsapp' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required',
         ]);
         $logoName = time() . '.' . $request->logo->extension();
         $request->logo->move(public_path('logo'), $logoName);
@@ -52,6 +68,11 @@ class LembagaController extends Controller
             'nama' => $request->post('nama'),
             'logo' => $logoName,
             'tentang' => $request->post('tentang'),
+            'kontak' => $request->post('kontak'),
+            'email' => $request->post('email'),
+            'whatsapp' => $request->post('whatsapp'),
+            'facebook' => $request->post('facebook'),
+            'instagram' => $request->post('instagram'),
         );
         Lembaga::where('id_lembaga', '=', $request->post('id_lembaga'))->update($edit);
         return redirect('instansi')->with('success', 'data berhasil di edit !');
