@@ -36,7 +36,6 @@ class LembagaController extends Controller
         ]);
         $logoName = time() . '.' . $request->logo->extension();
         $request->logo->move(public_path('logo'), $logoName);
-        // dd($validation);
         $datas = new Lembaga([
             'nama' => $request->nama,
             'logo' => $logoName,
