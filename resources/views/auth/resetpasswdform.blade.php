@@ -29,7 +29,7 @@
                                             <div class="form-group has-icon-left">
                                                 <label for="email-id-icon">Password</label>
                                                 <div class="position-relative">
-                                                    <input class="form-control" type="password" name="password" placeholder="password" id="password-id-icon">
+                                                    <input class="form-control" type="password" name="password" placeholder="masukkan password" id="password-id-icon">
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-lock"></i>
                                                     </div>
@@ -40,7 +40,7 @@
                                             <div class="form-group has-icon-left">
                                                 <label for="email-id-icon">Password confirmation</label>
                                                 <div class="position-relative">
-                                                    <input class="form-control" type="password" name="password_confirmation" placeholder="password_confirmation" id="password-id-icon">
+                                                    <input class="form-control" type="password" name="password_confirmation" placeholder="konfirmasi password" id="password-id-icon">
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-lock"></i>
                                                     </div>
