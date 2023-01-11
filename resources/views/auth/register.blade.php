@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group has-icon-left">
-                                                <label for="email-id-icon">Password</label>
+                                                <label for="email-id-icon">Password<span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <input class="form-control" type="password" name="password" placeholder="password" id="password-id-icon">
                                                     <div class="form-control-icon">

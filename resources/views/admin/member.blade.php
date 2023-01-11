@@ -31,11 +31,13 @@
         <div class="card">
             <div class="card-body">
                 <!-- Button trigger modal -->
+                @if(Auth::user()->role == 'member')
                 <div class="mb-2">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAdd">
                         Tambah Data
                     </button>
                 </div>
+                @endif
                 <div class="table-responsive">
                     <table class="table table-striped" id="table1">
                         <thead>

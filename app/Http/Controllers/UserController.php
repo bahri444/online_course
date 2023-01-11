@@ -38,8 +38,8 @@ class UserController extends Controller
     public function CreateAkun(Request $request)
     {
         $request->validate([
-            'username' => 'required',
-            'email' => 'required|email|unique:user',
+            'username' => 'required|max:15',
+            'email' => 'required|email|unique:email',
             'password' => 'required|min:6',
             // 'role' => 'required'
         ]);
