@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $keg = Kegiatan::all();
+        $keg = Kegiatan::orderBy('id_kegiatan', 'desc')->limit(5)->get();
         $data = Lembaga::all();
         return view('home.index', [
             'lembaga' => $data,
