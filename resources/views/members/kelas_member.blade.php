@@ -48,6 +48,12 @@
                                     <p>: {{$val->harga_kelas}}</p>
                                 </div>
                                 <div class="col-md-4">
+                                    <h6>Modul ke</h6>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <p>: {{$val->modul_ke}}</p>
+                                </div>
+                                <div class="col-md-4">
                                     <h6>Masa aktif kelas</h6>
                                 </div>
                                 <div class="col-md-8 form-group">
