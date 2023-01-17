@@ -121,7 +121,6 @@
 </div>
 
 <!-- modal add question -->
-@foreach($quis as $que)
 <div class="modal fade" id="modalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -137,7 +136,9 @@
                             <h6>Modul Ke</h6>
                             <fieldset class="form-group">
                                 <select name="id_modul" id="basicSelect" class="form-select">
+                                    @foreach($quis as $que)
                                     <option value="{{$que->id_modul}}" selected>{{$que->judul}}</option>
+                                    @endforeach
                                     @foreach($mdl as $mod)
                                     <option value="{{$mod->id_modul}}">{{$mod->judul}}</option>
                                     @endforeach
@@ -194,7 +195,6 @@
         </div>
     </div>
 </div>
-@endforeach
 
 
 <!-- modal update question -->
