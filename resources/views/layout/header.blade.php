@@ -102,7 +102,7 @@
                             <li class="menu-item  has-sub">
                                 <a href="#" class='menu-link'>
                                     <i class="fas fa-file-invoice"></i>
-                                    <span>Transaksi</span>
+                                    <span>Login / Register</span>
                                 </a>
                                 <div class="submenu ">
                                     <div class="submenu-group-wrapper">
