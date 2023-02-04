@@ -51,14 +51,6 @@
                                 <th class="text-center">Jenis kelas</th>
                                 <th class="text-center">Soal 1</th>
                                 <th class="text-center">Soal 2</th>
-                                <th class="text-center">Soal 3</th>
-                                <th class="text-center">Soal 4</th>
-                                <th class="text-center">Soal 5</th>
-                                <th class="text-center">Soal 6</th>
-                                <th class="text-center">Soal 7</th>
-                                <th class="text-center">Soal 8</th>
-                                <th class="text-center">Soal 9</th>
-                                <th class="text-center">Soal 10</th>
                                 <th class="text-center">Status soal</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -75,14 +67,6 @@
                                 <td>{{$val->jenis_kelas}}</td>
                                 <td>{{$val->one}}</td>
                                 <td>{{$val->two}}</td>
-                                <td>{{$val->three}}</td>
-                                <td>{{$val->four}}</td>
-                                <td>{{$val->five}}</td>
-                                <td>{{$val->six}}</td>
-                                <td>{{$val->seven}}</td>
-                                <td>{{$val->eight}}</td>
-                                <td>{{$val->nine}}</td>
-                                <td>{{$val->ten}}</td>
                                 <td>{{$val->status_question}}</td>
                                 <td>
                                     <div class="d-flex justify-content-between">
@@ -153,38 +137,6 @@
                             <h6>2. </h6>
                             <input class="form-control" type="text" name="two" placeholder="soal kedua" aria-label="default input example">
                         </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>3. </h6>
-                            <input class="form-control" type="text" name="three" placeholder="soal ketiga" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>4. </h6>
-                            <input class="form-control" type="text" name="four" placeholder="soal keempat" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>5. </h6>
-                            <input class="form-control" type="text" name="five" placeholder="soal kelima" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>6. </h6>
-                            <input class="form-control" type="text" name="six" placeholder="soal keenam" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>7. </h6>
-                            <input class="form-control" type="text" name="seven" placeholder="soal ketujuh" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>8. </h6>
-                            <input class="form-control" type="text" name="eight" placeholder="soal kedelapan" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>9. </h6>
-                            <input class="form-control" type="text" name="nine" placeholder="soal kesembilan" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>10. </h6>
-                            <input class="form-control" type="text" name="ten" placeholder="soal kesepuluh" aria-label="default input example">
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -229,38 +181,6 @@
                         <div class="col-md-12 mb-3">
                             <h6>2. </h6>
                             <input class="form-control" type="text" name="two" value="{{$qu->two}}" placeholder="soal kedua" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>3. </h6>
-                            <input class="form-control" type="text" name="three" value="{{$qu->three}}" placeholder="soal ketiga" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>4. </h6>
-                            <input class="form-control" type="text" name="four" value="{{$qu->four}}" placeholder="soal keempat" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>5. </h6>
-                            <input class="form-control" type="text" name="five" value="{{$qu->five}}" placeholder="soal kelima" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>6. </h6>
-                            <input class="form-control" type="text" name="six" value="{{$qu->six}}" placeholder="soal keenam" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>7. </h6>
-                            <input class="form-control" type="text" name="seven" value="{{$qu->seven}}" placeholder="soal ketujuh" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>8. </h6>
-                            <input class="form-control" type="text" name="eight" value="{{$qu->eight}}" placeholder="soal kedelapan" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>9. </h6>
-                            <input class="form-control" type="text" name="nine" value="{{$qu->nine}}" placeholder="soal kesembilan" aria-label="default input example">
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <h6>10. </h6>
-                            <input class="form-control" type="text" name="ten" value="{{$qu->ten}}" placeholder="soal kesepuluh" aria-label="default input example">
                         </div>
                         <div class="col-md-12 mb-3">
                             <h6>Status Quis</h6>

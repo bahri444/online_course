@@ -45,14 +45,6 @@ class QuestionController extends Controller
             'id_modul' => 'required',
             'one' => 'required',
             'two' => 'required',
-            'three' => 'required',
-            'four' => 'required',
-            'five' => 'required',
-            'six' => 'required',
-            'seven' => 'required',
-            'eight' => 'required',
-            'nine' => 'required',
-            'ten' => 'required',
         ]);
         // dd($validation);
         if ($validation == true) {
@@ -60,14 +52,6 @@ class QuestionController extends Controller
                 'id_modul' => $request->id_modul,
                 'one' => $request->one,
                 'two' => $request->two,
-                'three' => $request->three,
-                'four' => $request->four,
-                'five' => $request->five,
-                'six' => $request->six,
-                'seven' => $request->seven,
-                'eight' => $request->eight,
-                'nine' => $request->nine,
-                'ten' => $request->ten,
             ]);
             $add->save();
             return redirect('question')->with('success', 'soal quis berhasil di tambahkan..!');
@@ -79,14 +63,6 @@ class QuestionController extends Controller
             'id_modul' => 'required',
             'one' => 'required',
             'two' => 'required',
-            'three' => 'required',
-            'four' => 'required',
-            'five' => 'required',
-            'six' => 'required',
-            'seven' => 'required',
-            'eight' => 'required',
-            'nine' => 'required',
-            'ten' => 'required',
             'status_question' => 'required',
         ]);
         // dd($validation);
@@ -95,14 +71,6 @@ class QuestionController extends Controller
                 'id_modul' => $request->post('id_modul'),
                 'one' => $request->post('one'),
                 'two' => $request->post('two'),
-                'three' => $request->post('three'),
-                'four' => $request->post('four'),
-                'five' => $request->post('five'),
-                'six' => $request->post('six'),
-                'seven' => $request->post('seven'),
-                'eight' => $request->post('eight'),
-                'nine' => $request->post('nine'),
-                'ten' => $request->post('ten'),
                 'status_question' => $request->post('status_question'),
             );
             Question::where('id_question', '=', $request->post('id_question'))->update($updt);

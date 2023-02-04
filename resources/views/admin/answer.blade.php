@@ -42,14 +42,6 @@
                                 <th class="text-center">Nama bidang</th>
                                 <th class="text-center">Jawaban 1</th>
                                 <th class="text-center">Jawaban 2</th>
-                                <th class="text-center">Jawaban 3</th>
-                                <th class="text-center">Jawaban 4</th>
-                                <th class="text-center">Jawaban 5</th>
-                                <th class="text-center">Jawaban 6</th>
-                                <th class="text-center">Jawaban 7</th>
-                                <th class="text-center">Jawaban 8</th>
-                                <th class="text-center">Jawaban 9</th>
-                                <th class="text-center">Jawaban 10</th>
                                 <th class="text-center">Status Jawaban</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -66,14 +58,6 @@
                                 <td>{{$val->nama_bidang}}</td>
                                 <td>{{$val->a_one}}</td>
                                 <td>{{$val->a_two}}</td>
-                                <td>{{$val->a_three}}</td>
-                                <td>{{$val->a_four}}</td>
-                                <td>{{$val->a_five}}</td>
-                                <td>{{$val->a_six}}</td>
-                                <td>{{$val->a_seven}}</td>
-                                <td>{{$val->a_eight}}</td>
-                                <td>{{$val->a_nine}}</td>
-                                <td>{{$val->a_ten}}</td>
                                 <td>{{$val->status_answer}}</td>
                                 <td>
                                     <div class="d-flex justify-content-between">

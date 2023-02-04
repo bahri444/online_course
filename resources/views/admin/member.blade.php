@@ -49,6 +49,7 @@
                                 <th class="text-center">Foto</th>
                                 <th class="text-center">Gender</th>
                                 <th class="text-center">Alamat</th>
+                                <th class="text-center">Email</th>
                                 <th class="text-center">Github</th>
                                 <th class="text-center">Telepon</th>
                                 <th class="text-center">Status member</th>
@@ -66,6 +67,7 @@
                                 <td><img src="/foto/{{$val->foto}}" width="70" height="70" class="rounded-circle" alt=""></td>
                                 <td>{{$val->gender}}</td>
                                 <td>{{$val->alamat}}</td>
+                                <td>{{$val->email}}</td>
                                 <td>{{$val->github}}</td>
                                 <td>{{$val->telepon}}</td>
                                 <td>{{$val->status_member}}</td>

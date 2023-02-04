@@ -53,14 +53,6 @@ class AnswerController extends Controller
             'id_question' => 'required',
             'a_one' => 'required',
             'a_two' => 'required',
-            'a_three' => 'required',
-            'a_four' => 'required',
-            'a_five' => 'required',
-            'a_six' => 'required',
-            'a_seven' => 'required',
-            'a_eight' => 'required',
-            'a_nine' => 'required',
-            'a_ten' => 'required',
             'status_answer' => 'required',
         ]);
         // dd($validation);
@@ -69,14 +61,6 @@ class AnswerController extends Controller
                 'id_question' => $request->id_question,
                 'a_one' => $request->a_one,
                 'a_two' => $request->a_two,
-                'a_three' => $request->a_three,
-                'a_four' => $request->a_four,
-                'a_five' => $request->a_five,
-                'a_six' => $request->a_six,
-                'a_seven' => $request->a_seven,
-                'a_eight' => $request->a_eight,
-                'a_nine' => $request->a_nine,
-                'a_ten' => $request->a_ten,
                 'status_answer' => $request->status_answer,
             ]);
             $add->save();
