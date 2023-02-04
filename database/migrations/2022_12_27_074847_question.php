@@ -19,14 +19,6 @@ return new class extends Migration
             $table->foreignId('id_modul');
             $table->string('one');
             $table->string('two');
-            $table->string('three');
-            $table->string('four');
-            $table->string('five');
-            $table->string('six');
-            $table->string('seven');
-            $table->string('eight');
-            $table->string('nine');
-            $table->string('ten');
             $table->enum('status_question', ['nonaktif', 'aktif', 'selesai'])->default('nonaktif');
             $table->timestamps();
             $table->foreign('id_modul')->references('id_modul')->on('modul')->cascadeOnUpdate()->cascadeOnDelete();
