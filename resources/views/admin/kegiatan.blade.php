@@ -220,7 +220,7 @@
                             <div class="card-header">Deskripsi</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
-                                    <textarea class="form-control" name="deskripsi" value="{{$rows->deskripsi}}" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" name="deskripsi" value="{{$rows->deskripsi}}" id="exampleFormControlTextarea1" rows="3">{{$rows->deskripsi}}</textarea>
                                     <label>Deskripsi kegiatan</label>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@
                             <div class="card-header">Tujuan</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
-                                    <textarea class="form-control" name="tujuan" value="{{$rows->tujuan}}" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" name="tujuan" value="{{$rows->tujuan}}" id="exampleFormControlTextarea1" rows="3">{{$rows->tujuan}}</textarea>
                                     <label>Tujuan kegiatan</label>
                                 </div>
                             </div>
@@ -238,7 +238,7 @@
                             <div class="card-header">Manfaat</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">
-                                    <textarea class="form-control" name="manfaat" value="{{$rows->manfaat}}" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" name="manfaat" value="{{$rows->manfaat}}" id="exampleFormControlTextarea1" rows="3">{{$rows->manfaat}}</textarea>
                                     <label>Manfaat kegiatan</label>
                                 </div>
                             </div>
