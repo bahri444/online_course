@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('answer', function (Blueprint $table) {
             $table->id('id_answer');
             $table->foreignId('id_question');
+            $table->string('nama_anda', 30);
             $table->string('a_one');
             $table->string('a_two');
             $table->enum('status_answer', ['nonaktif', 'aktif', 'selesai'])->default('nonaktif');

@@ -40,6 +40,8 @@
                                 <th class="text-center">Modul ke</th>
                                 <th class="text-center">Jenis kelas</th>
                                 <th class="text-center">Nama bidang</th>
+                                <th class="text-center">Soal no 1</th>
+                                <th class="text-center">Soal no 2</th>
                                 <th class="text-center">Jawaban 1</th>
                                 <th class="text-center">Jawaban 2</th>
                                 <th class="text-center">Status Jawaban</th>
@@ -51,11 +53,13 @@
                             @foreach($answer as $val)
                             <tr class="text-center">
                                 <td><?= $i++ ?></td>
-                                <td>{{$val->nama_member}}</td>
+                                <td>{{$val->nama_anda}}</td>
                                 <td>{{$val->judul}}</td>
                                 <td>{{$val->modul_ke}}</td>
                                 <td>{{$val->jenis_kelas}}</td>
                                 <td>{{$val->nama_bidang}}</td>
+                                <td>{{$val->one}}</td>
+                                <td>{{$val->two}}</td>
                                 <td>{{$val->a_one}}</td>
                                 <td>{{$val->a_two}}</td>
                                 <td>{{$val->status_answer}}</td>

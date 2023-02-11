@@ -139,6 +139,10 @@
                     <div class="row">
                         <div class="col-12 mt-3">
                             <input type="hidden" name="id_question" value="{{$ques->id_question}}" class="form-control">
+                            <h6>Nama lengakap</h6>
+                            <input type="text" name="nama_anda" class="form-control" placeholder="masukkan nama lengkap">
+                        </div>
+                        <div class="col-12 mt-3">
                             <div class="card-header">1. {{$ques->one}}</div>
                             <div class="card-body">
                                 <div class="form-group with-title mb-3">

@@ -20,14 +20,13 @@ class AnswerController extends Controller
         $quis = Question::all();
         $mentor = Mentor::all();
         $answer = DB::table('answer')
-            ->join('question', 'question.id_question', '=', 'answer.id_question')
-            ->join('modul', 'modul.id_modul', '=', 'question.id_modul')
-            ->join('kelas', 'kelas.id_kelas', '=', 'modul.id_kelas')
-            ->join('transaksi_kelas', 'transaksi_kelas.id_kelas', '=', 'kelas.id_kelas')
-            ->join('member', 'member.id_member', '=', 'transaksi_kelas.id_member')
-            ->join('bidang', 'bidang.id_bidang', '=', 'kelas.id_bidang')
+            ->leftJoin('question', 'question.id_question', '=', 'answer.id_question')
+            ->leftJoin('modul', 'modul.id_modul', '=', 'question.id_modul')
+            ->leftJoin('kelas', 'kelas.id_kelas', '=', 'modul.id_kelas')
+            ->leftJoin('bidang', 'bidang.id_bidang', '=', 'kelas.id_bidang')
+            // ->leftJoin('transaksi_kelas', 'transaksi_kelas.id_kelas', '=', 'kelas.id_kelas')
+            // ->leftJoin('member', 'member.id_member', '=', 'transaksi_kelas.id_member')
             ->orderByDesc('id_answer')->get();
-        // dd($answer);
         if (Auth::user()->role == "admin") {
             return view('admin.answer', [
                 'instansi' => $l,
@@ -51,6 +50,7 @@ class AnswerController extends Controller
     {
         $validation = $request->validate([
             'id_question' => 'required',
+            'nama_anda' => 'required',
             'a_one' => 'required',
             'a_two' => 'required',
             'status_answer' => 'required',
@@ -59,6 +59,7 @@ class AnswerController extends Controller
         if ($validation == true) {
             $add = new Answer([
                 'id_question' => $request->id_question,
+                'nama_anda' => $request->nama_anda,
                 'a_one' => $request->a_one,
                 'a_two' => $request->a_two,
                 'status_answer' => $request->status_answer,
