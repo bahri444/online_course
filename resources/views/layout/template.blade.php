@@ -275,7 +275,7 @@
                                             Copyright &copy;<script>
                                                 document.write(new Date().getFullYear());
                                             </script>
-                                            All rights reserved | Devloper <span class="text-danger"></span> by <a href="#">Bahri & Ilwi</a>
+                                            All rights reserved | Devloper <span class="text-danger"></span> by <a href="https://github.com/bahri444/online_course">Bahri</a>
                                         </p>
                                     </div>
                                 </div>
