@@ -9,7 +9,7 @@
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                All rights reserved | Devloper <span class="text-danger"></span> by <a href="https://github.com/bahri444/online_course">Bahri</a>
+                                All rights reserved | Devloper <span class="text-danger"></span> by <a href="https://github.com/bahri444/online_course">Bahri semet</a>
                             </p>
                         </div>
                     </div>
