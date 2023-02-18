@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id('id_answer');
             $table->foreignId('id_question');
             $table->string('nama_anda', 30);
-            $table->string('a_one');
-            $table->string('a_two');
+            $table->longText('a_one');
+            $table->longText('a_two');
             $table->enum('status_answer', ['nonaktif', 'aktif', 'selesai'])->default('nonaktif');
             $table->timestamps();
             $table->foreign('id_question')->references('id_question')->on('question')->cascadeOnUpdate()->cascadeOnDelete();
