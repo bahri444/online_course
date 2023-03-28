@@ -19,4 +19,12 @@ class Question extends Model
         'updated_at'
     ];
     public $timestamps = true;
+    public function scopeJoinToModul($query)
+    {
+        return $query->join('modul', 'modul.id_modul', '=', 'question.id_modul');
+    }
+    public function scopeJoinToKelas($query)
+    {
+        return $query->join('kelas', 'kelas.id_kelas', '=', 'modul.id_kelas');
+    }
 }

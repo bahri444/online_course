@@ -85,21 +85,9 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="member" class='sidebar-link'>
-                                <i class="fas fa-user-friends"></i>
-                                <span>Member</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a href="bidang" class='sidebar-link'>
                                 <i class="fas fa-user-graduate"></i>
                                 <span>Bidang</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="mentor" class='sidebar-link'>
-                                <i class="fas fa-chalkboard-teacher"></i>
-                                <span>Mentor</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

@@ -9,6 +9,7 @@ use App\Models\Lembaga;
 use App\Models\Member;
 use App\Models\Modul;
 use App\Models\Question;
+use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,22 +19,20 @@ class LearnKelas extends Controller
 
     public function ReadKelas()
     {
-        $member = Member::all();
+        $user = User::all();
         $kelas = Kelas::all();
         $inst = Lembaga::all();
         $kelas = Kelas::all();
         $modul = Modul::all();
         $quis = Question::all();
         $bid = Bidang::all();
-        $transaction = DB::table('transaksi_kelas')
-            ->join('kelas', 'kelas.id_kelas', '=', 'transaksi_kelas.id_kelas')
-            ->join('bidang', 'bidang.id_bidang', '=', 'kelas.id_bidang')
-            ->join('member', 'member.id_member', '=', 'transaksi_kelas.id_member')
-            ->join('modul', 'modul.id_kelas', '=', 'kelas.id_kelas')
+        $transaction = Transaksi::joinToKelas()
+            ->joinToBidang()
+            ->joinToUser()
+            ->joinToModul()
             ->get();
         return view('members.kelas_member', [
             'title' => 'kelas anda',
-            'member' => $member,
             'kelas' => $kelas,
             'modul' => $modul,
             'quis' => $quis,

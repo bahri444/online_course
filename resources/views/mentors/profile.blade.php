@@ -9,24 +9,24 @@
             <div class="col-md-12 mx-auto">
                 <div class="form">
                     <div class="modal-body">
-                        @foreach($mentor as $mtr)
-                        @if(Auth::user()->id_user == $mtr->id_user)
-                        @if($mtr->status_mentor=='nonaktif')
+                        @foreach($users as $usr)
+                        @if(Auth::user()->id_user == $usr->id_user)
+                        @if($usr->status_akun=='nonaktif')
                         <div class="col-2 mx-auto">
-                            <div class="text text-warning">Invalid</div>
+                            <div class="text text-warning">Panding validation</div>
                         </div>
-                        @elseif($mtr->status_mentor=='aktif')
+                        @elseif($usr->status_akun=='aktif')
                         <div class="row">
                             <div class="col-md-5 mb-3 mx-auto">
-                                <img src="/foto/{{$mtr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
+                                <img src="/foto/{{$usr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <h6>Username</h6>
+                                <h6>Nama Lengkap</h6>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h6>: {{$mtr->username}}</h6>
+                                <h6>: {{$usr->nama_lengkap}}</h6>
                             </div>
                         </div>
                         <div class="row">
@@ -34,15 +34,7 @@
                                 <h6>Nama bidang</h6>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h6>: {{$mtr->nama_bidang}}</h6>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <h6>Nama mentor</h6>
-                            </div>
-                            <div class="col-md-8 mb-3">
-                                <h6>: {{$mtr->nama_mentor}}</h6>
+                                <h6>: {{$usr->nama_bidang}}</h6>
                             </div>
                         </div>
                         <div class="row">
@@ -50,7 +42,7 @@
                                 <h6>Tanggal lahir</h6>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h6>: {{$mtr->tgl_lhr}}</h6>
+                                <h6>: {{$usr->tgl_lhr}}</h6>
                             </div>
                         </div>
                         <div class="row">
@@ -58,7 +50,7 @@
                                 <h6>Gender</h6>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h6>: {{$mtr->gender}}</h6>
+                                <h6>: {{$usr->gender}}</h6>
                             </div>
                         </div>
                         <div class="row">
@@ -66,7 +58,7 @@
                                 <h6>Alamat</h6>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h6>: {{$mtr->alamat}}</h6>
+                                <h6>: {{$usr->alamat}}</h6>
                             </div>
                         </div>
                         <div class="row">
@@ -74,7 +66,7 @@
                                 <h6>Nama github</h6>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h6>: {{$mtr->github}}</h6>
+                                <h6>: {{$usr->github}}</h6>
                             </div>
                         </div>
                         <div class="row">
@@ -82,7 +74,7 @@
                                 <h6>Telepon</h6>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h6>: {{$mtr->telepon}}</h6>
+                                <h6>: {{$usr->telepon}}</h6>
                             </div>
                         </div>
                         <div class="col-2 mx-auto">
@@ -90,7 +82,7 @@
                         </div>
                         <!-- Button trigger modal -->
                         <div class="mb-2 col-4 mx-auto">
-                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$mtr->id_mentor}}">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$usr->id_user}}">
                                 Update Profile
                             </button>
                         </div>
@@ -105,8 +97,8 @@
 </div>
 
 <!-- modal update -->
-@foreach($mentor as $row)
-<div class="modal fade" id="modalUpdate{{$row->id_mentor}}" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($users as $row)
+<div class="modal fade" id="modalUpdate{{$row->id_user}}" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -119,9 +111,9 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <input type="hidden" name="id_mentor" value="{{$row->id_mentor}}" class="form-control">
-                            @foreach($users as $mtr)
-                            @if(Auth::user()->id_user == $mtr->id_user)
-                            <input type="hidden" class="form-control" name="id_user" value="{{$mtr->id_user}}">
+                            @foreach($users as $usr)
+                            @if(Auth::user()->id_user == $usr->id_user)
+                            <input type="hidden" class="form-control" name="id_user" value="{{$usr->id_user}}">
                             @endif
                             @endforeach
                             <h6>Nama bidang</h6>

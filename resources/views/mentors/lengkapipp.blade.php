@@ -25,9 +25,10 @@
                             </select>
                         </fieldset>
                     </div>
+
                     <div class="col-md-6 mb-3">
-                        <h6>Nama mentor</h6>
-                        <input class="form-control" type="text" name="nama_mentor" placeholder="nama mentor" aria-label="default input example">
+                        <h6>Github</h6>
+                        <input class="form-control" type="text" name="github" placeholder="username github" aria-label="default input example">
                     </div>
                 </div>
                 <div class="row">
@@ -64,11 +65,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <h6>Github</h6>
-                        <input class="form-control" type="text" name="github" placeholder="username github" aria-label="default input example">
-                    </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <h6>Telepon</h6>
                         <input class="form-control" type="text" name="telepon" placeholder="telepon" aria-label="default input example">
                     </div>

@@ -41,9 +41,10 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Username</th>
+                                <th class="text-center">Nama Lengkap</th>
                                 <th class="text-center">Email</th>
                                 <th class="text-center">Level</th>
+                                <th class="text-center">Status Akun</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -52,18 +53,24 @@
                             @foreach($users as $val)
                             <tr class="text-center">
                                 <td><?= $i++ ?></td>
-                                <td>{{$val->username}}</td>
+                                <td>{{$val->nama_lengkap}}</td>
                                 <td>{{$val->email}}</td>
                                 <td>{{$val->role}}</td>
+                                <td>{{$val->status_akun}}</td>
                                 <td class="d-flex justify-content-center">
                                     <!-- <div class="d-flex justify-content-center"> -->
                                     <!-- <div class="d-flex"> -->
-                                    <div class="col-2">
+                                    <div class="col-4">
                                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$val->id_user}}">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-4">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalInfo{{$val->id_user}}">
+                                            <i class="fas fa-info"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-4">
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{$val->id_user}}">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -113,6 +120,59 @@
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalInfo{{$valId->id_user}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Info akun {{$valId->nama_lengkap}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-4">
+                        <h6>Tgl lahir</h6>
+                    </div>
+                    <div class="col-7">
+                        <p>: {{$valId->tgl_lahir}}</p>
+                    </div>
+                    <div class="col-4">
+                        <h6>Foto</h6>
+                    </div>
+                    <div class="col-7">
+                        <p>: {{$valId->foto}}</p>
+                    </div>
+                    <div class="col-4">
+                        <h6>Gender</h6>
+                    </div>
+                    <div class="col-7">
+                        <p>: {{$valId->gender}}</p>
+                    </div>
+                    <div class="col-4">
+                        <h6>Alamat</h6>
+                    </div>
+                    <div class="col-7">
+                        <p>: {{$valId->alamat}}</p>
+                    </div>
+                    <div class="col-4">
+                        <h6>Github</h6>
+                    </div>
+                    <div class="col-7">
+                        <p>: {{$valId->github}}</p>
+                    </div>
+                    <div class="col-4">
+                        <h6>No Hp</h6>
+                    </div>
+                    <div class="col-7">
+                        <p>: {{$valId->telepon}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

@@ -7,6 +7,7 @@ use App\Models\Kelas;
 use App\Models\Lembaga;
 use App\Models\Mentor;
 use App\Models\Modul;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class ModulController extends Controller
         $data = Lembaga::all();
         $dataKelas = Kelas::all();
         $dataKategori = KategoriModul::all();
-        $mentor = Mentor::all();
+        $mentor = User::all();
         $join = DB::table('modul')
             ->join('kategori_modul', 'kategori_modul.id_kategori_modul', '=', 'modul.id_kategori_modul')
             ->join('kelas', 'kelas.id_kelas', '=', 'modul.id_kelas')

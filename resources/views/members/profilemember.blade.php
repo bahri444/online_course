@@ -19,13 +19,13 @@
                             @endforeach
                             @endif
                         </div>
-                        @foreach($member as $mbr)
+                        @foreach($users as $mbr)
                         @if(Auth::user()->id_user == $mbr->id_user)
-                        @if($mbr->status_member=='nonaktif')
+                        @if($mbr->status_akun='nonaktif')
                         <div class="col-md-2 mx-auto">
                             <h6 class="text text-warning">pending validation</h6>
                         </div>
-                        @elseif($mbr->status_member=='aktif')
+                        @elseif($mbr->status_akun=='aktif')
                         <div class="row">
                             <div class="col-lg-5 mb-3 mx-auto">
                                 <img src="/foto/{{$mbr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
@@ -109,7 +109,7 @@
 </div>
 
 <!-- modal update -->
-@foreach($member as $row)
+@foreach($users as $row)
 <div class="modal fade" id="modalUpdate{{$row->id_member}}" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

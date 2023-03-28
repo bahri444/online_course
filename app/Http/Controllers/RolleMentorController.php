@@ -17,9 +17,8 @@ class RolleMentorController extends Controller
         $data = Lembaga::all();
         $dataUser = User::all();
         $dataBidang = Bidang::all();
-        $dataMentor = DB::table('mentor')
-            ->join('user', 'user.id_user', '=', 'mentor.id_user')
-            ->join('bidang', 'bidang.id_bidang', '=', 'mentor.id_bidang')
+        $dataMentor = DB::table('bidang')
+            ->join('user', 'user.id_bidang', '=', 'bidang.id_bidang')
             ->get();
         if (Auth::user()->role == 'mentor') {
             return view('mentors.profile', [
@@ -38,8 +37,8 @@ class RolleMentorController extends Controller
         $data = Lembaga::all();
         $dataUser = User::all();
         $dataBidang = Bidang::all();
-        $dataMentor = DB::table('mentor')->join('user', 'user.id_user', '=', 'mentor.id_user')
-            ->join('bidang', 'bidang.id_bidang', '=', 'mentor.id_bidang')
+        $dataMentor = DB::table('bidang')
+            ->join('user', 'user.id_bidang', '=', 'bidang.id_bidang')
             ->get();
         if (Auth::user()->role == 'mentor') {
             return view('mentors.lengkapipp', [
@@ -58,7 +57,6 @@ class RolleMentorController extends Controller
         $validation = $request->validate([
             'id_user' => 'required',
             'id_bidang' => 'required',
-            'nama_mentor' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
@@ -71,18 +69,17 @@ class RolleMentorController extends Controller
         $request->foto->move(public_path('foto'), $imageName);
 
         if ($validation == true) {
-            $add = new Mentor([
+            $update = array(
                 'id_user' => $request->id_user,
                 'id_bidang' => $request->id_bidang,
-                'nama_mentor' => $request->nama_mentor,
                 'tgl_lhr' => $request->tgl_lhr,
                 'foto' => $imageName,
                 'gender' => $request->gender,
                 'alamat' => $request->alamat,
                 'github' => $request->github,
                 'telepon' => $request->telepon
-            ]);
-            $add->save();
+            );
+            User::where('id_user', '=', $request->id_user)->update($update);
             return redirect('profile')->with('success', 'data berhasil di tambahkan !');
         }
     }
@@ -91,7 +88,6 @@ class RolleMentorController extends Controller
         $request->validate([
             'id_user' => 'required',
             'id_bidang' => 'required',
-            'nama_mentor' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
@@ -105,7 +101,6 @@ class RolleMentorController extends Controller
         $data = array(
             'id_user' => $request->post('id_user'),
             'id_bidang' => $request->post('id_bidang'),
-            'nama_mentor' => $request->post('nama_mentor'),
             'tgl_lhr' => $request->post('tgl_lhr'),
             'foto' => $imageName,
             'gender' => $request->post('gender'),
@@ -113,7 +108,7 @@ class RolleMentorController extends Controller
             'github' => $request->post('github'),
             'telepon' => $request->post('telepon')
         );
-        Mentor::where('id_mentor', '=', $request->post('id_mentor'))->update($data);
+        User::where('id_user', '=', $request->post('id_user'))->update($data);
         return redirect('profile')->with('success', 'data berhasil di edit !');
     }
 }

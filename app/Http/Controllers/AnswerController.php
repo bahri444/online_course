@@ -7,6 +7,7 @@ use App\Models\Lembaga;
 use App\Models\Mentor;
 use App\Models\Modul;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,14 +19,11 @@ class AnswerController extends Controller
         $l = Lembaga::all();
         $mdl = Modul::all();
         $quis = Question::all();
-        $mentor = Mentor::all();
-        $answer = DB::table('answer')
-            ->leftJoin('question', 'question.id_question', '=', 'answer.id_question')
-            ->leftJoin('modul', 'modul.id_modul', '=', 'question.id_modul')
-            ->leftJoin('kelas', 'kelas.id_kelas', '=', 'modul.id_kelas')
-            ->leftJoin('bidang', 'bidang.id_bidang', '=', 'kelas.id_bidang')
-            // ->leftJoin('transaksi_kelas', 'transaksi_kelas.id_kelas', '=', 'kelas.id_kelas')
-            // ->leftJoin('member', 'member.id_member', '=', 'transaksi_kelas.id_member')
+        $mentor = User::all();
+        $answer = Answer::leftJoinToQuestion()
+            ->leftJoinToModul()
+            ->leftJoinToKelas()
+            ->leftJoinToBidang()
             ->orderByDesc('id_answer')->get();
         if (Auth::user()->role == "admin") {
             return view('admin.answer', [

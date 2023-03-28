@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Modul</h3>
-                <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->username}}</p>
+                <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->nama_lengkap}}</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">

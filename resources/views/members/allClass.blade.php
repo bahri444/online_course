@@ -15,12 +15,12 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h6>Nama member</h6>
+                            <h6>Nama Lengkap</h6>
                             <fieldset class="form-group">
                                 <select name="id_member" id="basicSelect" class="form-select">
-                                    @foreach($member as $valId)
+                                    @foreach($users as $valId)
                                     @if(Auth::user()->id_user == $valId->id_user)
-                                    <option value="{{$valId->id_member}}">{{$valId->nama_member}}</option>
+                                    <option value="{{$valId->id_user}}">{{$valId->nama_lengkap}}</option>
                                     @endif
                                     @endforeach
                                 </select>
@@ -53,8 +53,8 @@
 @endforeach
 
 <!--read data all kelas-->
-@foreach($member as $mbr)
-@if(Auth::user()->id_user == $mbr->id_user && $mbr->status_member=='aktif')
+@foreach($users as $mbr)
+@if(Auth::user()->id_user == $mbr->id_user && $mbr->status_akun=='aktif')
 <div class="row justify-content-center">
     <div class="col-xl-5">
         <div class="section_tittle text-center">

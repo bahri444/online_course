@@ -2,12 +2,12 @@
 @section('content')
 <div class="page-heading">
     <h3>Dashboard</h3>
-    <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->username}}</p>
+    <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->nama_lengkap}}</p>
 </div>
 <div class="page-content">
     <section class="row">
-        @foreach($member as $me)
-        @if(Auth::user()->id_user==$me->id_user && $me->status_member=='aktif')
+        @foreach($user as $me)
+        @if(Auth::user()->id_user==$me->id_user && $me->status_akun=='aktif')
         <div class="row">
             <div class="col-6 col-lg-3 col-md-6">
                 <div class="card shadow-lg">

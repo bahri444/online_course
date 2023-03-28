@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('transaksi_kelas', function (Blueprint $table) {
             $table->id('id_transaksi');
-            $table->foreignId('id_member');
+            $table->foreignId('id_user');
             $table->foreignId('id_kelas');
             $table->date('tgl_bayar');
             $table->enum('validasi_pembayaran', ['pending', 'valid'])->default('pending');
             $table->timestamps();
-            $table->foreign('id_member')->references('id_member')->on('member')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('id_user')->references('id_user')->on('user')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }

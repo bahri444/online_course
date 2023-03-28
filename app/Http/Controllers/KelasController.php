@@ -19,7 +19,6 @@ class KelasController extends Controller
         $data = Lembaga::all();
         $dataBidang = Bidang::all();
         $dataUser = User::all();
-        $member = Member::all();
         $transaksi = Transaksi::all();
         $dataKelas = DB::table('kelas')
             ->join('bidang', 'bidang.id_bidang', '=', 'kelas.id_bidang')
@@ -38,7 +37,6 @@ class KelasController extends Controller
                 'users' => $dataUser,
                 'data_bidang' => $dataBidang,
                 'joinKelas' => $dataKelas,
-                'member' => $member,
                 'transaksi' => $transaksi,
                 'title' => 'data kelas'
             ]);

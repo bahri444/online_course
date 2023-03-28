@@ -22,9 +22,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group has-icon-left">
-                                                <label for="first-name-icon">Username<span class="text-danger">*</span></label>
+                                                <label for="first-name-icon">Nama Lengkap<span class="text-danger">*</span></label>
                                                 <div class="position-relative">
-                                                    <input class="form-control" type="text" name="username" placeholder="Username" id="first-name-icon" value="{{old('username')}}" autofocus>
+                                                    <input class="form-control" type="text" name="nama_lengkap" placeholder="Nama Lengkap" id="first-name-icon" value="{{old('nama_lengkap')}}" autofocus>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-person"></i>
                                                     </div>

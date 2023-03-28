@@ -16,12 +16,10 @@ class RoleMembersController extends Controller
     {
         $data = Lembaga::all();
         $dataUser = User::all();
-        $dataMember = DB::table('member')->join('user', 'user.id_user', '=', 'member.id_user')->get();
         if (Auth::user()->role == 'member') {
             return view('members.profilemember', [
                 'instansi' => $data,
                 'users' => $dataUser,
-                'member' => $dataMember,
                 'title' => 'data member'
             ]);
         } else {
@@ -32,13 +30,11 @@ class RoleMembersController extends Controller
     {
         $data = Lembaga::all();
         $dataUser = User::all();
-        $dataMember = DB::table('member')->join('user', 'user.id_user', '=', 'member.id_user')->get();
         // dd($dataMember);
         if (Auth::user()->role == 'member') {
             return view('members.lengkapimember', [
                 'instansi' => $data,
                 'users' => $dataUser,
-                'member' => $dataMember,
                 'title' => 'data member'
             ]);
         } else {
@@ -49,7 +45,7 @@ class RoleMembersController extends Controller
     {
         $validation = $request->validate([
             'id_user' => 'required',
-            'nama_member' => 'required',
+            'nama_lengkap' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
@@ -62,9 +58,9 @@ class RoleMembersController extends Controller
         $request->foto->move(public_path('foto'), $imageName);
 
         if ($validation == true) {
-            $add = new Member([
+            $add = new User([
                 'id_user' => $request->id_user,
-                'nama_member' => $request->nama_member,
+                'nama_lengkap' => $request->nama_lengkap,
                 'tgl_lhr' => $request->tgl_lhr,
                 'foto' => $imageName,
                 'gender' => $request->gender,
@@ -80,7 +76,7 @@ class RoleMembersController extends Controller
     {
         $request->validate([
             'id_user' => 'required',
-            'nama_member' => 'required',
+            'nama_lengkap' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
@@ -93,7 +89,7 @@ class RoleMembersController extends Controller
 
         $data = array(
             'id_user' => $request->post('id_user'),
-            'nama_member' => $request->post('nama_member'),
+            'nama_lengkap' => $request->post('nama_lengkap'),
             'tgl_lhr' => $request->post('tgl_lhr'),
             'foto' => $imageName,
             'gender' => $request->post('gender'),
@@ -101,7 +97,7 @@ class RoleMembersController extends Controller
             'github' => $request->post('github'),
             'telepon' => $request->post('telepon')
         );
-        Member::where('id_member', '=', $request->post('id_member'))->update($data);
+        User::where('id_user', '=', $request->post('id_user'))->update($data);
         return redirect('profilemember')->with('success', 'data berhasil di edit !');
     }
 }

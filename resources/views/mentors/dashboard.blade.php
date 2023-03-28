@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-heading">
     <h3>Dashboard</h3>
-    <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->username}}</p>
+    <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->nama_lengkap}}</p>
 </div>
 <div class="page-content">
     <section class="row">

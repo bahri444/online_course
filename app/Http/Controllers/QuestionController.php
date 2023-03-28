@@ -6,6 +6,7 @@ use App\Models\Lembaga;
 use App\Models\Mentor;
 use App\Models\Modul;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,10 +17,9 @@ class QuestionController extends Controller
     {
         $l = Lembaga::all();
         $mdl = Modul::all();
-        $mentor = Mentor::all();
-        $question = DB::table('question')
-            ->join('modul', 'modul.id_modul', '=', 'question.id_modul')
-            ->join('kelas', 'kelas.id_kelas', '=', 'modul.id_kelas')
+        $mentor = User::all();
+        $question = Question::joinToModul()
+            ->joinToKelas()
             ->orderBy('id_question', 'desc')->get();
         if (Auth::user()->role == 'admin') {
             return view('admin.question', [
